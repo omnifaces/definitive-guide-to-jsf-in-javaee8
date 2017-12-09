@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/templates/page.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+	<ui:define name="content">
+		<h:form id="login">
+			<fieldset>
+				<h:outputLabel for="email" value="#{text['label.email']}" />
+				<h:inputText id="email" required="true" value="#{login.email}" />
+				<h:message for="email" styleClass="message" />
+
+				<h:outputLabel for="password" value="#{text['label.password']}" />
+				<h:inputSecret id="password" required="true" value="#{login.password}" />
+				<h:message for="password" styleClass="message" />
+
+				<h:commandButton id="submit" action="#{login.submit}" value="#{text['label.login']}" />
+				<h:message for="login" styleClass="message" />
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

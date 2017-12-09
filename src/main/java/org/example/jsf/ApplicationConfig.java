@@ -5,6 +5,6 @@ import javax.faces.annotation.FacesConfig;
 
 @FacesConfig
 @ApplicationScoped
-public class Application {
+public class ApplicationConfig {
 
 }

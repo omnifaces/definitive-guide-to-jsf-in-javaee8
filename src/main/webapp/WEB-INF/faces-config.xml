@@ -5,4 +5,20 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3"
 >
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+			<supported-locale>hi</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>org.example.jsf.i18n.text</base-name>
+			<var>text</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>com.example.project.i18n.DatabaseResourceBundle</base-name>
+			<var>i18n</var>
+		</resource-bundle>
+		<message-bundle>org.example.jsf.i18n.messages</message-bundle>
+	</application>
 </faces-config>
