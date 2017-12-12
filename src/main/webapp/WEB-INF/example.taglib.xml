@@ -72,4 +72,17 @@
 			<type>boolean</type>
 		</attribute>
 	</tag>
+
+	<tag>
+		<description>Renders a HTML list.</description>
+		<tag-name>dataList</tag-name>
+		<component>
+			<component-type>example.DataList</component-type>
+		</component>
+	</tag>
+
+	<tag>
+		<tag-name>viewParamValidationFailed</tag-name>
+		<handler-class>com.example.project.taghandler.ViewParamValidationFailed</handler-class>
+	</tag>
 </facelet-taglib>

@@ -21,4 +21,12 @@
 		</resource-bundle>
 		<message-bundle>com.example.project.i18n.messages</message-bundle>
 	</application>
+
+	<render-kit>
+	    <renderer>
+	        <component-family>javax.faces.Message</component-family>
+	        <renderer-type>javax.faces.Message</renderer-type>
+	        <renderer-class>com.example.project.renderer.EscapableMessageRenderer</renderer-class>
+	    </renderer>
+	</render-kit>
 </faces-config>
