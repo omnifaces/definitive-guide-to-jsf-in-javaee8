@@ -12,6 +12,7 @@
 			<ui:include src="/WEB-INF/includes/layout/header.xhtml" />
 		</header>
 		<main>
+			<ui:insert name="head"><h1>#{title}</h1></ui:insert>
 			<ui:insert name="content" />
 		</main>
 		<footer>

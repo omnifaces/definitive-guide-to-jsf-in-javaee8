@@ -19,7 +19,7 @@ public class Spa implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		if (page == null) {
+		if (page == null || page.isEmpty()) {
 			page = "page1";
 		}
 	}
