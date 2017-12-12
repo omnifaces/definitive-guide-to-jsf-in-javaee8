@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	H2 data source configuration for WildFly.
+ -->
+<datasources>
+	<datasource jta="true" jndi-name="java:global/DataSourceName" pool-name="DataSourceName" enabled="true" use-java-context="true">
+		<connection-url>jdbc:h2:mem:test</connection-url>
+		<driver>h2</driver>
+		<security>
+			<user-name>sa</user-name>
+			<password>sa</password>
+		</security>
+	</datasource>
+</datasources>
