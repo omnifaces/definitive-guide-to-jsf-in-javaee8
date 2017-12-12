@@ -1,4 +1,4 @@
-package org.example.jsf;
+package com.example.project;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.FacesConfig;

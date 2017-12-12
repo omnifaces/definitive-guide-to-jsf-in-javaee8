@@ -9,7 +9,7 @@
 		<maven>3.0.0</maven>
 	</prerequisites>
 
-	<groupId>org.example.jsf</groupId>
+	<groupId>com.example.project</groupId>
 	<artifactId>definitive-guide-to-jsf-in-javaee8</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>

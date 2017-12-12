@@ -1,4 +1,4 @@
-package org.example.jsf.i18n;
+package com.example.project.i18n;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import javax.enterprise.inject.spi.CDI;
 import javax.faces.context.FacesContext;
 
-import org.example.jsf.service.TranslationService;
+import com.example.project.service.TranslationService;
 
 public class DatabaseResourceBundle extends ResourceBundle {
 

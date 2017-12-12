@@ -1,4 +1,4 @@
-package org.example.jsf.model;
+package com.example.project.model;
 
 import java.util.Locale;
 

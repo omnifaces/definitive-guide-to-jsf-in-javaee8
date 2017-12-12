@@ -1,4 +1,4 @@
-package org.example.jsf.service;
+package com.example.project.service;
 
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 

@@ -1,4 +1,4 @@
-package org.example.jsf;
+package com.example.project;
 
 import java.io.Serializable;
 import java.util.ArrayList;
