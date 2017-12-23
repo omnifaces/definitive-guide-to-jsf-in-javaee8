@@ -22,6 +22,10 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value> <!-- Switchable between Development, UnitTest, SystemTest and Production. -->
 	</context-param>
+	<context-param>
+		<param-name>javax.faces.validator.ENABLE_VALIDATE_WHOLE_BEAN</param-name>
+		<param-value>true</param-value> <!-- Explicitly required to activate f:validateWholeBean. -->
+	</context-param>
 
 
 	<!-- Servlets. -->

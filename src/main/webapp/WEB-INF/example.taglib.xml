@@ -85,4 +85,11 @@
 		<tag-name>viewParamValidationFailed</tag-name>
 		<handler-class>com.example.project.taghandler.ViewParamValidationFailed</handler-class>
 	</tag>
+	
+	<tag>
+		<tag-name>convertLocalDate</tag-name>
+		<converter>
+			<converter-id>project.ConvertLocalDate</converter-id>
+		</converter>
+	</tag>
 </facelet-taglib>
