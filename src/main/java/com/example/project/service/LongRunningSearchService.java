@@ -14,17 +14,17 @@ public class LongRunningSearchService {
 
 	@Asynchronous
 	public void asyncLoadResults(Consumer<List<Result>> callback) {
-    	long fiveSecondsLater = System.nanoTime() + (long) 5e9;
+		long fiveSecondsLater = System.nanoTime() + (long) 5e9;
 
-    	while (System.nanoTime() < fiveSecondsLater) {
+		while (System.nanoTime() < fiveSecondsLater) {
 			// Crunch.
 		}
 
-    	List<Result> results = new ArrayList<>();
-    	results.add(new Result(1));
-    	results.add(new Result(2));
-    	results.add(new Result(3));
+		List<Result> results = new ArrayList<>();
+		results.add(Result.create(1));
+		results.add(Result.create(2));
+		results.add(Result.create(3));
 
-    	callback.accept(results);
+		callback.accept(results);
 	}
 }

@@ -14,7 +14,8 @@ public class Spa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject @ManagedProperty("#{param.page}")
+	@Inject
+	@ManagedProperty("#{param.page}")
 	private String page;
 
 	@PostConstruct

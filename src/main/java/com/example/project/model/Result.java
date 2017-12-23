@@ -6,10 +6,12 @@ public class Result {
 	private String name;
 	private String value;
 
-	public Result(long i) {
-		id = i;
-		name = "name" + i;
-		value = "value" + i;
+	public static Result create(long i) {
+		Result result = new Result();
+		result.id = i;
+		result.name = "name" + i;
+		result.value = "value" + i;
+		return result;
 	}
 
 	public Long getId() {

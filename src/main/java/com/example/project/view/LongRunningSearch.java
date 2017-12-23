@@ -13,26 +13,32 @@ import javax.inject.Named;
 import com.example.project.model.Result;
 import com.example.project.service.LongRunningSearchService;
 
-@Named @ViewScoped
+@Named
+@ViewScoped
 public class LongRunningSearch implements Serializable {
 
-    private List<Result> results;
+	private static final long serialVersionUID = 1L;
 
-    @Inject
-    private LongRunningSearchService service;
+	private List<Result> results;
 
-    @Inject @Push
-    private PushContext push;
+	@Inject
+	private LongRunningSearchService service;
 
-    @PostConstruct
-    public void init() {
-        service.asyncLoadResults(results -> {
-            this.results = results;
-            push.send("loaded");
-        });
-    }
+	@Inject
+	@Push
+	private PushContext push;
 
-    public List<Result> getResults() {
-        return results;
-    }
+	@PostConstruct
+	public void init() {
+		service.asyncLoadResults(
+				results -> {
+					this.results = results;
+					push.send("loaded");
+				}
+		);
+	}
+
+	public List<Result> getResults() {
+		return results;
+	}
 }
