@@ -18,8 +18,18 @@ public class ProductService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@TransactionAttribute(SUPPORTS)
+	public Product getById(Long id) {
+		return entityManager.find(Product.class, id);
+	}
+
+	@TransactionAttribute(SUPPORTS)
+	public List<Product> list() {
+		return entityManager.createQuery("FROM Product ORDER BY id DESC", Product.class).getResultList();
+	}
+
 	@TransactionAttribute(REQUIRED)
-	public Long persist(Product product) {
+	public Long create(Product product) {
 		entityManager.persist(product);
 		return product.getId();
 	}
@@ -29,14 +39,28 @@ public class ProductService {
 		return entityManager.merge(product);
 	}
 
-	@TransactionAttribute(SUPPORTS)
-	public Product getById(Long id) {
-		return entityManager.find(Product.class, id);
+	@TransactionAttribute(REQUIRED)
+	public void update(Iterable<Product> products) {
+		products.forEach(this::update);
 	}
 
-	@TransactionAttribute(SUPPORTS)
-	public List<Product> getAll() {
-		return entityManager.createQuery("FROM Product", Product.class).getResultList();
+	@TransactionAttribute(REQUIRED)
+	public void delete(Product product) {
+		if (entityManager.contains(product)) {
+			entityManager.remove(product);
+		}
+		else {
+			Product managedProduct = getById(product.getId());
+
+			if (managedProduct != null) {
+				entityManager.remove(managedProduct);
+			}
+		}
+	}
+
+	@TransactionAttribute(REQUIRED)
+	public void delete(Iterable<Product> products) {
+		products.forEach(this::delete);
 	}
 
 }

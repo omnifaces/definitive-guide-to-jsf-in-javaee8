@@ -12,7 +12,7 @@ import com.example.project.service.ProductService;
 
 @Named
 @RequestScoped
-public class ViewProducts {
+public class ListProducts {
 
 	private List<Product> products;
 
@@ -21,7 +21,7 @@ public class ViewProducts {
 
 	@PostConstruct
 	public void init() {
-		products = productService.getAll();
+		products = productService.list();
 	}
 
 	public List<Product> getProducts() {

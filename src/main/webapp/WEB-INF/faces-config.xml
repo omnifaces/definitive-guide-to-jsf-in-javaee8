@@ -20,6 +20,15 @@
 			<var>i18n</var>
 		</resource-bundle>
 		<message-bundle>com.example.project.i18n.messages</message-bundle>
+		
+		<resource-handler>com.example.project.resourcehandler.VersionResourceHandler</resource-handler>
+		
+ 		<system-event-listener>
+			<system-event-listener-class>com.example.project.listener.DynamicResourceListener</system-event-listener-class>
+			<system-event-class>javax.faces.event.PostAddToViewEvent</system-event-class>
+			<source-class>javax.faces.component.UIOutput</source-class>
+		</system-event-listener>
+		
 	</application>
 
 	<render-kit>

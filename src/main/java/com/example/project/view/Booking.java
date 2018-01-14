@@ -2,7 +2,6 @@ package com.example.project.view;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -12,12 +11,7 @@ import com.example.project.model.Period;
 @ViewScoped
 public class Booking implements Serializable {
 
-	private Period period;
-
-	@PostConstruct
-	public void init() {
-		period = new Period();
-	}
+	private Period period = new Period();
 
 	public void submit() {
 		System.out.println(period.getStartDate());

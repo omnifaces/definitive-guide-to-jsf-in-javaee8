@@ -29,9 +29,9 @@ public class ApplicationConfig implements ServletContextListener {
 	}
 
 	private void createTestProducts() {
-		productService.persist(Product.create("One", "The first product"));
-		productService.persist(Product.create("Two", "The second product"));
-		productService.persist(Product.create("Three", "The third product"));
+		productService.create(Product.create("One", "The first product"));
+		productService.create(Product.create("Two", "The second product"));
+		productService.create(Product.create("Three", "The third product"));
 	}
 
 }
