@@ -9,47 +9,187 @@
 	</h:head>
 	<h:body>
 		<header>
-			<h1>The Definitive Guide to JSF in Java EE 8</h1>
+			<h1><a href="https://www.amazon.com/Definitive-Guide-JSF-Java-Applications/dp/1484233867" target="_blank">The Definitive Guide to JSF in Java EE 8</a></h1>
+			<p>
+				This project contains several examples which are elaborated in the book.
+				Below are all chapters and sections so far.
+				Some sections cover one or more full examples.
+				They are linked below where applicable.
+			</p>
 		</header>
 		<main>
 			<h2>Index</h2>
 			<nav>
-				<ul>
+				<ol>
+					<li>
+						Fundamentals
+					</li>
+					<li>
+						JSF and Java EE 8
+					</li>
+					<li>
+						From Zero to Hello World
+						<ul>
+							<li>TBD</li>
+						</ul>
+					</li>
+					<li>
+						Components
+						<ul>
+							<li>Standard HTML components</li>
+							<li>Standard core tags</li>
+							<li>Lifecycle</li>
+							<li>Ajax lifecycle</li>
+							<li>View build time</li>
+							<li>View render time</li>
+							<li>View state</li>
+							<li>View scope</li>
+							<li>Phase events</li>
+							<li>Component system events</li>
+							<li>Custom component system events</li>
+							<li>JSTL core tags</li>
+							<li>Manipulating the component tree</li>
+						</ul>
+					</li>
+					<li>
+						Form Components
+						<ul>
+							<li>Input, select and command components</li>
+							<li>Text based input components</li>
+							<li>File based input component</li>
+							<li>Selection components</li>
+							<li>SelectItem tags</li>
+							<li>Label and message components</li>
+							<li>Command components</li>
+							<li>Navigation</li>
+							<li>Ajaxifying components</li>
+							<li>Navigation in Ajax</li>
+							<li>GET forms</li>
+							<li>Stateless forms</li>
+						</ul>
+					</li>
 					<li>
 						Conversion and Validation
 						<ul>
-							<li><h:link outcome="validate-whole-bean">Validate Whole Bean</h:link></li>
-							<li><h:link outcome="products/list">Custom Converter in Master-Detail page</h:link></li>
-							<li><h:link outcome="custom-messages">Custom messages</h:link></li>
+							<li>Standard converters</li>
+							<li><h:link outcome="/chapter06/validate-whole-bean">Standard validators</h:link></li>
+							<li>Immediate attribute</li>
+							<li><h:link outcome="/chapter06/products/list">Custom converters</h:link></li>
+							<li>Custom validators</li>
+							<li>Custom constraints</li>
+							<li><h:link outcome="/chapter06/custom-messages">Custom messages</h:link></li>
 						</ul>
 					</li>
 					<li>
 						Output Components
 						<ul>
-							<li><h:link outcome="html-unescaping">HTML Unescaping</h:link></li>
-							<li><h:link outcome="products">CRUD Table</h:link></li>
+							<li>Document based output components</li>
+							<li><h:link outcome="/chapter07/html-unescaping">Text based output components</h:link></li>
+							<li>Navigation based output components</li>
+							<li>Panel based output components</li>
+							<li><h:link outcome="/chapter07/products">Data iteration component</h:link></li>
+							<li>Resource components</li>
+							<li>Passthrough elements</li>
 						</ul>
 					</li>
 					<li>
-						<h:link outcome="home">Facelets Templating</h:link>
+						Facelets Templating
 						<ul>
-							<li><h:link outcome="spa">Single Page Application</h:link></li>
+							<li>XHTML</li>
+							<li><h:link outcome="/chapter08/home">Template compositions</h:link></li>
+							<li><h:link outcome="/chapter08/spa">Single Page Application</h:link></li>
+							<li>Template decorations</li>
+							<li>Tag files</li>
+							<li>Composite components</li>
 						</ul>
 					</li>
 					<li>
-						<h:link outcome="websocket">WebSocket Push</h:link>
+						Backing Beans
 						<ul>
-							<li><h:link outcome="one-time-push">One Time Push</h:link></li>
-							<li><h:link outcome="stateful-ui-updates">Stateful UI Updates</h:link></li>
+							<li>Model, View or Controller?</li>
+							<li>Managed Beans</li>
+							<li>Scopes</li>
+							<li>Layers</li>
+							<li>Naming conventions</li>
 						</ul>
 					</li>
 					<li>
-						<h:link outcome="localization">Localization</h:link>
+						Exception Handling
 						<ul>
-							<li><h:link outcome="login">Login Page</h:link></li>
+							<li>TBD</li>
 						</ul>
 					</li>
-				</ul>
+					<li>
+						WebSocket Push
+						<ul>
+							<li>Configuration</li>
+							<li>Usage</li>
+							<li>Scopes and users</li>
+							<li>Channel design hints</li>
+							<li><h:link outcome="/chapter11/one-time-push">One-time push</h:link></li>
+							<li><h:link outcome="/chapter11/stateful-ui-updates">Stateful UI updates</h:link></li>
+							<li>Sitewide push notifications</li>
+							<li>Keeping track of active sockets</li>
+							<li>Detecting session and view expiration</li>
+						</ul>
+					</li>
+					<li>
+						Custom Components
+						<ul>
+							<li>Component Type, Component Family and Renderer Type</li>
+							<li>Creating new component and renderer</li>
+							<li>Extending existing HTML component</li>
+							<li>Extending existing HTML renderer</li>
+							<li>Custom tag handlers</li>
+							<li>Packaging in a distributable JAR</li>
+						</ul>
+					</li>
+					<li>
+						Search Expressions
+						<ul>
+							<li>TBD</li>
+						</ul>
+					</li>
+					<li>
+						Security
+						<ul>
+							<li>Protect access to resources</li>
+							<li>Setting the authentication mechanism</li>
+							<li>Setting the identity store</li>
+							<li>Providing our custom JSF code</li>
+							<li>Caller initiated authentication</li>
+							<li>Remember Me</li>
+							<li>Activating remember-me service</li>
+							<li>Conditionally rendering based on access</li>
+							<li>Cross-site request forgery protection</li>
+							<li>Request parameter tampering protection</li>
+							<li>Cross-site scripting protection</li>
+							<li>Source code exposure protection</li>
+						</ul>
+					</li>
+					<li>
+						Localization
+						<ul>
+							<li>Hello World, Olá mundo, नमस्ते दुनिया</li>
+							<li>Configuration</li>
+							<li>Referencing bundle in JSF page</li>
+							<li><h:link outcome="/chapter15/localization">Changing the active locale</h:link></li>
+							<li><h:link outcome="/login">Organizing bundle keys</h:link></li> <!-- NOTE: Not placed in /chapter15 subfolder in order to satisfy page_ prefix in i18n files. -->
+							<li>Localizing conversion/validation messages</li>
+							<li>Obtaining localized message in custom converter/validator</li>
+							<li>Localizing enums</li>
+							<li>Parameterized resource bundles</li>
+							<li>Database based ResourceBundle</li>
+							<li>HTML in resource bundle</li>
+						</ul>
+					</li>
+					<li>
+						Extensions
+						<ul>
+							<li>TBD</li>
+						</ul>
+					</li>
+				</ol>
 			</nav>
 		</main>
 	</h:body>

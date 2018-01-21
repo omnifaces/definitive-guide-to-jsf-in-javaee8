@@ -14,9 +14,9 @@ public class LongRunningSearchService {
 
 	@Asynchronous
 	public void asyncLoadResults(Consumer<List<Result>> callback) {
-		long fiveSecondsLater = System.nanoTime() + (long) 5e9;
+		long threeSecondsLater = System.nanoTime() + (long) 3e9;
 
-		while (System.nanoTime() < fiveSecondsLater) {
+		while (System.nanoTime() < threeSecondsLater) {
 			// Crunch.
 		}
 

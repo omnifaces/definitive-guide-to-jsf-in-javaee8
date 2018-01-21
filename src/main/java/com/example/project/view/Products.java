@@ -53,9 +53,13 @@ public class Products {
 		selection.clear();
 	}
 
+
+	private Long id;
 	public void delete(Product product) {
 		productService.delete(product);
 		list.remove(product);
+
+		list.removeIf(p -> p.getId().equals(id));
 	}
 
 	public List<Product> getList() {

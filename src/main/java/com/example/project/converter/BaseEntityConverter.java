@@ -1,12 +1,12 @@
 package com.example.project.converter;
 
+import javax.enterprise.inject.spi.CDI;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
 
 import com.example.project.model.BaseEntity;
 import com.example.project.service.BaseEntityService;
@@ -14,8 +14,8 @@ import com.example.project.service.BaseEntityService;
 @FacesConverter(forClass=BaseEntity.class, managed=true)
 public class BaseEntityConverter implements Converter<BaseEntity> {
 
-	@Inject
-	private BaseEntityService baseEntityService;
+	// @Inject doesn't work due to https://github.com/javaserverfaces/mojarra/issues/4324
+	private BaseEntityService baseEntityService = CDI.current().select(BaseEntityService.class).get();
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, BaseEntity entity) {
