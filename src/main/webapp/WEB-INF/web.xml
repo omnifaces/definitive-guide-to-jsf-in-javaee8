@@ -11,6 +11,10 @@
 	<!-- Standard JSF settings. -->
 
 	<context-param>
+		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
+		<param-value>102400</param-value> <!-- 100 kB, so that the AjaxExceptionHandler has chance to reset the response when an exception occurs during render response phase. -->
+	</context-param>
+	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value> <!-- Prevent comments from evaluating any EL expressions and ending up in generated HTML output. -->
 	</context-param>
@@ -56,5 +60,17 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
+
+
+	<!-- Error pages -->
+
+	<error-page>	
+		<error-code>500</error-code>
+		<location>/WEB-INF/errorpages/500.xhtml</location>
+	</error-page>
+	<error-page>	
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/WEB-INF/errorpages/expired.xhtml</location>
+	</error-page>
 
 </web-app>

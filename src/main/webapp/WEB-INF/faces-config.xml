@@ -28,8 +28,12 @@
 			<system-event-class>javax.faces.event.PostAddToViewEvent</system-event-class>
 			<source-class>javax.faces.component.UIOutput</source-class>
 		</system-event-listener>
-		
 	</application>
+
+	<factory>
+		<exception-handler-factory>com.example.project.exceptionhandler.AjaxExceptionHandler$Factory</exception-handler-factory>
+		<exception-handler-factory>com.example.project.exceptionhandler.BusinessExceptionHandler$Factory</exception-handler-factory>
+	</factory>
 
 	<render-kit>
 	    <renderer>

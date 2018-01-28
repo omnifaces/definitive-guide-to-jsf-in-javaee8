@@ -8,18 +8,22 @@
 	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
 >
 	<ui:insert name="metadata" />
+
 	<h:head>
 		<title>#{view.viewId}</title>
 	</h:head>
+
 	<h:body>
 		<header>
 			<nav>
 				<h:link outcome="/index">Back to index</h:link>
 			</nav>
 		</header>
+
 		<main>
 			<h1>#{view.viewId}</h1>
 			<ui:insert name="content" />
+			<h:messages id="globalMessages" globalOnly="true" />
 		</main>
 	</h:body>
 </html>
