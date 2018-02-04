@@ -19,6 +19,7 @@ public class Messages implements Serializable {
 
 	private Message message = new Message();
 	private List<Message> list;
+	private List<Message> tree;
 
 	@Inject
 	private MessageService messageService;
@@ -26,10 +27,11 @@ public class Messages implements Serializable {
 	@PostConstruct
 	public void init() {
 		list = messageService.list();
+		tree = messageService.tree();
 	}
 
 	public void save() {
-		messageService.persist(message);
+		messageService.create(message);
 		list.add(message);
 		message = new Message();
 	}
@@ -41,4 +43,9 @@ public class Messages implements Serializable {
 	public List<Message> getList() {
 		return list;
 	}
+
+	public List<Message> getTree() {
+		return tree;
+	}
+
 }

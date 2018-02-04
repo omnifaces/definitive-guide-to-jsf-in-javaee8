@@ -1,9 +1,15 @@
 package com.example.project.model;
 
+import static java.util.Collections.emptyList;
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.example.project.model.listener.MarkdownListener;
@@ -24,6 +30,19 @@ public class Message extends BaseEntity implements Markdown {
 
 	@Column(nullable = false, length = 8)
 	private String version;
+
+	@ManyToOne
+	private Message replyTo;
+
+	@OneToMany(mappedBy="replyTo")
+	private List<Message> replies = emptyList();
+
+	public static Message create(String text, Message replyTo) {
+		Message message = new Message();
+		message.text = text;
+		message.replyTo = replyTo;
+		return message;
+	}
 
 	@Override
 	public String getText() {
@@ -54,6 +73,22 @@ public class Message extends BaseEntity implements Markdown {
 	@Override
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	public Message getReplyTo() {
+		return replyTo;
+	}
+
+	public void setReplyTo(Message replyTo) {
+		this.replyTo = replyTo;
+	}
+
+	public List<Message> getReplies() {
+		return replies;
+	}
+
+	public void setReplies(List<Message> replies) {
+		this.replies = replies;
 	}
 
 }

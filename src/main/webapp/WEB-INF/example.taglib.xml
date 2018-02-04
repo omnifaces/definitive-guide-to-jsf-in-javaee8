@@ -6,6 +6,7 @@
 >
 	<namespace>http://example.com/tags</namespace>
 	<short-name>t</short-name>
+	<composite-library-name>components</composite-library-name>
 
 	<tag>
 		<description>Renders label + input + message field.</description>

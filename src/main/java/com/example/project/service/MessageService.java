@@ -1,5 +1,6 @@
 package com.example.project.service;
 
+import static java.util.stream.Collectors.toList;
 import static javax.ejb.TransactionAttributeType.REQUIRED;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class MessageService {
 	private EntityManager entityManager;
 
 	@TransactionAttribute(REQUIRED)
-	public Long persist(Message message) {
+	public Long create(Message message) {
 		entityManager.persist(message);
 		return message.getId();
 	}
@@ -26,6 +27,12 @@ public class MessageService {
 	@TransactionAttribute(REQUIRED) // Transaction is required in order to get JPA to auto-flush the by MarkdownListener auto-updated entities when Markdown version has changed.
 	public List<Message> list() {
 		return entityManager.createQuery("FROM Message ORDER BY id DESC", Message.class).getResultList();
+	}
+
+	@TransactionAttribute(REQUIRED) // Transaction is required in order to get JPA to auto-flush the by MarkdownListener auto-updated entities when Markdown version has changed.
+	public List<Message> tree() {
+		return entityManager.createQuery("SELECT DISTINCT m FROM Message m LEFT JOIN FETCH m.replies r ORDER BY m.id ASC", Message.class)
+			.getResultList().stream().filter(m -> m.getReplyTo() == null).collect(toList());
 	}
 
 }
