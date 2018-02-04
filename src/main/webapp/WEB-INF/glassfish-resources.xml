@@ -6,7 +6,7 @@
 	"-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
 	"http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
 <resources>
-	<jdbc-resource jndi-name="java:global/DataSourceName" pool-name="DataSourceName" />
+	<jdbc-resource jndi-name="java:app/DataSourceName" pool-name="DataSourceName" />
 	<jdbc-connection-pool name="DataSourceName" res-type="javax.sql.DataSource" datasource-classname="org.h2.jdbcx.JdbcDataSource">
 		<property name="url" value="jdbc:h2:mem:test" />
 		<property name="user" value="sa" />

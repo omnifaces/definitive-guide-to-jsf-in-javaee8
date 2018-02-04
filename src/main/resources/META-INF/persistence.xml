@@ -6,7 +6,7 @@
 	version="2.2"
 >
 	<persistence-unit name="PersistenceUnitName">
-		<jta-data-source>java:global/DataSourceName</jta-data-source>
+		<jta-data-source>java:app/DataSourceName</jta-data-source>
 
 		<properties>
 			<property name="hibernate.show_sql" value="true" />

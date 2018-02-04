@@ -21,11 +21,13 @@ public class ActiveLocale implements Serializable {
 	private Locale current;
 	private List<Locale> available;
 
-	@Inject
-	private FacesContext context;
+	// TODO: Outcommented for now because Payara 5 Beta 2 falls over this with NPE in JCDIServiceImpl.createManagedObject.
+	// @Inject
+	// private FacesContext context;
 
 	@PostConstruct
 	public void init() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		Application app = context.getApplication();
 		current = app.getViewHandler().calculateLocale(context);
 		available = new ArrayList<>();
@@ -34,7 +36,7 @@ public class ActiveLocale implements Serializable {
 	}
 
 	public void reload() {
-		context.getPartialViewContext().getEvalScripts().add("location.replace(location)");
+		FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("location.replace(location)");
 	}
 
 	public Locale getCurrent() {
