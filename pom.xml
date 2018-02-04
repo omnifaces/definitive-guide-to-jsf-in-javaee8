@@ -56,7 +56,12 @@
 			<artifactId>commonmark</artifactId>
 			<version>0.10.0</version>
 		</dependency>
-		<dependency>
+		<dependency> <!-- NOTE: this dependency should not be necessary when you target a server which already bundles Hibernate, such as WildFly. -->
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.12.Final</version>
+		</dependency>
+		<dependency> <!-- NOTE: this dependency should not be necessary when you target a server which already bundles H2, such as WildFly. -->
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
