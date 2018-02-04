@@ -9,7 +9,7 @@
 >
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="time" value="Time" />
+			<h:outputLabel for="time:hour" value="Time" />
 			<t:inputLocalTime id="time" value="#{schedule.time}">
 				<f:ajax execute="time" render=":output" />
 			</t:inputLocalTime>

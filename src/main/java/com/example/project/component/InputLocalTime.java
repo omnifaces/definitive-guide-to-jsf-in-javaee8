@@ -43,13 +43,30 @@ public class InputLocalTime extends UIInput implements NamingContainer {
 
 	@Override
 	public Object getSubmittedValue() {
-		return hour.getSubmittedValue() + ":" + minute.getSubmittedValue();
+		String submittedHour = (String) hour.getSubmittedValue();
+		String submittedMinute = (String) minute.getSubmittedValue();
+
+		if (submittedHour == null || submittedMinute == null) {
+			return null;
+		}
+		else if (submittedHour.isEmpty() || submittedMinute.isEmpty()) {
+			return "";
+		}
+		else {
+			return submittedHour + ":" + submittedMinute;
+		}
 	}
 
 	@Override
 	protected Object getConvertedValue(FacesContext context, Object submittedValue) {
+		String submittedTime = (String) submittedValue;
+
+		if (submittedTime == null || submittedTime.isEmpty()) {
+			return null;
+		}
+
 		try {
-			return LocalTime.parse((String) submittedValue, DateTimeFormatter.ISO_LOCAL_TIME);
+			return LocalTime.parse(submittedTime, DateTimeFormatter.ISO_LOCAL_TIME);
 		}
 		catch (DateTimeParseException e) {
 			throw new ConverterException(e);

@@ -6,17 +6,19 @@
 >
 	<cc:interface componentType="inputLocalTime">
 		<cc:attribute name="value" type="java.time.LocalTime" shortDescription="Selected time. Defaults to 00:00." />
-		<cc:attribute name="disabled" type="boolean" shortDescription="Disabled state. Defaults to false." />
+		<cc:attribute name="required" type="boolean" shortDescription="Required state. Defaults to false." />
 		<cc:clientBehavior name="change" default="true" targets="hour minute" event="change" />
 	</cc:interface>
 
 	<cc:implementation>
 		<span id="#{cc.clientId}" class="inputLocalTime">
-			<h:selectOneMenu id="hour" binding="#{cc.hour}" disabled="#{cc.attrs.disabled}">
+			<h:selectOneMenu id="hour" binding="#{cc.hour}" required="#{cc.attrs.required}">
+				<f:selectItem itemValue="#{null}" />
 				<f:selectItems value="#{cc.hours}" />
 			</h:selectOneMenu>
 			:
-			<h:selectOneMenu id="minute" binding="#{cc.minute}" disabled="#{cc.attrs.disabled}">
+			<h:selectOneMenu id="minute" binding="#{cc.minute}" required="#{cc.attrs.required}">
+				<f:selectItem itemValue="#{null}" />
 				<f:selectItems value="#{cc.minutes}" />
 			</h:selectOneMenu>
 		</span>
