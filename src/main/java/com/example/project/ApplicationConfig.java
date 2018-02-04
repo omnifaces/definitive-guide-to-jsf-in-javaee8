@@ -1,6 +1,7 @@
 package com.example.project;
 
 import javax.faces.annotation.FacesConfig;
+import javax.faces.context.FacesContext;
 import javax.faces.push.PushContext;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -12,6 +13,7 @@ import com.example.project.model.Message;
 import com.example.project.model.Product;
 import com.example.project.service.MessageService;
 import com.example.project.service.ProductService;
+import com.example.project.view.search.MessagesKeywordResolver;
 
 @FacesConfig
 @WebListener
@@ -26,6 +28,7 @@ public class ApplicationConfig implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		enableWebsocketEndpoint(event.getServletContext());
+		registerMessagesKeywordResolver(FacesContext.getCurrentInstance());
 		createTestProducts();
 		createTestMessages();
 	}
@@ -34,6 +37,10 @@ public class ApplicationConfig implements ServletContextListener {
 		context.setInitParameter(PushContext.ENABLE_WEBSOCKET_ENDPOINT_PARAM_NAME, "true");
 	}
 
+	private void registerMessagesKeywordResolver(FacesContext context) {
+		context.getApplication().addSearchKeywordResolver(new MessagesKeywordResolver());
+	}
+	
 	private void createTestProducts() {
 		productService.create(Product.create("One", "The first product"));
 		productService.create(Product.create("Two", "The second product"));
