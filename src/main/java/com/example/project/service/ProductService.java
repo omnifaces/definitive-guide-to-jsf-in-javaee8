@@ -25,7 +25,7 @@ public class ProductService {
 
 	@TransactionAttribute(SUPPORTS)
 	public List<Product> list() {
-		return entityManager.createQuery("FROM Product ORDER BY id DESC", Product.class).getResultList();
+		return entityManager.createQuery("FROM Product p ORDER BY p.id DESC", Product.class).getResultList();
 	}
 
 	@TransactionAttribute(REQUIRED)

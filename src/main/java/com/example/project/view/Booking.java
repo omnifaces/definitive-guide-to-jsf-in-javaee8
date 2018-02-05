@@ -11,6 +11,8 @@ import com.example.project.model.Period;
 @ViewScoped
 public class Booking implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Period period = new Period();
 
 	public void submit() {
