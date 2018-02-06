@@ -73,4 +73,13 @@
 		<location>/WEB-INF/errorpages/expired.xhtml</location>
 	</error-page>
 
+
+	<!-- Data sources -->
+	
+	<data-source>
+		<name>java:global/DataSourceName</name>
+		<class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+		<url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
+	</data-source>
+
 </web-app>
