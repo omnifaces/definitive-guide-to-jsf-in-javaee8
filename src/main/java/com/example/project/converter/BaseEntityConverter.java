@@ -28,6 +28,7 @@ public class BaseEntityConverter implements Converter<BaseEntity> {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public BaseEntity getAsObject(FacesContext context, UIComponent component, String id) {
 		if (id == null || id.isEmpty()) {
 			return null;
