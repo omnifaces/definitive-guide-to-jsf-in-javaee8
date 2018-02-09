@@ -12,7 +12,7 @@ import javax.persistence.UniqueConstraint;
 @DiscriminatorColumn(name = "type")
 @Table(uniqueConstraints = {
 	@UniqueConstraint(columnNames = { "formId", "name" }),
-	@UniqueConstraint(columnNames = { "formId", "ordering" }),
+	@UniqueConstraint(columnNames = { "formId", "ordering" })
 })
 public abstract class Field extends BaseEntity {
 

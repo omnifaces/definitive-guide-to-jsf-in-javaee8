@@ -48,31 +48,31 @@ public class DynamicFormBean implements DynamicForm {
 
 	@Override
 	public void createOutputLabel(Field field) {
-	    HtmlOutputLabel outputLabel = new HtmlOutputLabel();
-	    outputLabel.setId(field.getName() + "_l");
-	    outputLabel.setFor(field.getName());
-	    outputLabel.setValue(field.getLabel());
-	    form.getChildren().add(outputLabel);
+		HtmlOutputLabel outputLabel = new HtmlOutputLabel();
+		outputLabel.setId(field.getName() + "_l");
+		outputLabel.setFor(field.getName());
+		outputLabel.setValue(field.getLabel());
+		form.getChildren().add(outputLabel);
 	}
 
 	@Override
 	public void createInputText(Field field) {
-	    HtmlInputText inputText = new HtmlInputText();
-	    inputText.setId(field.getName());
-	    inputText.setLabel(field.getLabel());
-	    inputText.setValueExpression("value", createValueExpression(field));
-	    inputText.setRequired(field.isRequired());
-	    form.getChildren().add(inputText);
+		HtmlInputText inputText = new HtmlInputText();
+		inputText.setId(field.getName());
+		inputText.setLabel(field.getLabel());
+		inputText.setValueExpression("value", createValueExpression(field));
+		inputText.setRequired(field.isRequired());
+		form.getChildren().add(inputText);
 	}
 
 	@Override
 	public void createInputSecret(Field field) {
-	    HtmlInputSecret inputSecret = new HtmlInputSecret();
-	    inputSecret.setId(field.getName());
-	    inputSecret.setLabel(field.getLabel());
-	    inputSecret.setValueExpression("value", createValueExpression(field));
-	    inputSecret.setRequired(field.isRequired());
-	    form.getChildren().add(inputSecret);
+		HtmlInputSecret inputSecret = new HtmlInputSecret();
+		inputSecret.setId(field.getName());
+		inputSecret.setLabel(field.getLabel());
+		inputSecret.setValueExpression("value", createValueExpression(field));
+		inputSecret.setRequired(field.isRequired());
+		form.getChildren().add(inputSecret);
 	}
 
 	@Override
@@ -94,13 +94,13 @@ public class DynamicFormBean implements DynamicForm {
 	}
 
 	private static ValueExpression createValueExpression(Field field) {
-	    FacesContext context = FacesContext.getCurrentInstance();
-	    return context.getApplication().getExpressionFactory().createValueExpression(context.getELContext(), "#{dynamicFormBean.values['" + field.getName() + "']}", Object.class);
+		FacesContext context = FacesContext.getCurrentInstance();
+		return context.getApplication().getExpressionFactory().createValueExpression(context.getELContext(), "#{dynamicFormBean.values['" + field.getName() + "']}", Object.class);
 	}
 
 	private static MethodExpression createMethodExpression(Field field) {
-	    FacesContext context = FacesContext.getCurrentInstance();
-	    return context.getApplication().getExpressionFactory().createMethodExpression(context.getELContext(), "#{dynamicFormBean.submit}", Object.class, new Class[0]);
+		FacesContext context = FacesContext.getCurrentInstance();
+		return context.getApplication().getExpressionFactory().createMethodExpression(context.getELContext(), "#{dynamicFormBean.submit}", Object.class, new Class[0]);
 	}
 
 	private static AjaxBehavior createAjaxBehavior(Field field) {
@@ -109,13 +109,13 @@ public class DynamicFormBean implements DynamicForm {
 		ajax.setExecute(asList("@form"));
 		ajax.setRender(asList("@messages"));
 
-        UIOutput jsfjs = new UIOutput();
-        jsfjs.setRendererType(context.getApplication().getResourceHandler().getRendererTypeForResourceName(JSF_SCRIPT_RESOURCE_NAME));
-        jsfjs.getAttributes().put("name", JSF_SCRIPT_RESOURCE_NAME);
-        jsfjs.getAttributes().put("library", JSF_SCRIPT_LIBRARY_NAME);
-        context.getViewRoot().addComponentResource(context, jsfjs);
+		UIOutput jsfjs = new UIOutput();
+		jsfjs.setRendererType(context.getApplication().getResourceHandler().getRendererTypeForResourceName(JSF_SCRIPT_RESOURCE_NAME));
+		jsfjs.getAttributes().put("name", JSF_SCRIPT_RESOURCE_NAME);
+		jsfjs.getAttributes().put("library", JSF_SCRIPT_LIBRARY_NAME);
+		context.getViewRoot().addComponentResource(context, jsfjs);
 
-        return ajax;
+		return ajax;
 	}
 
 	public String submit() {
