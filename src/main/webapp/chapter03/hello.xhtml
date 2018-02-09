@@ -7,19 +7,15 @@
     <h:head>
         <title>Hello World</title>
     </h:head>
-    <h:body>
-        <h1>Hello World</h1>
-        <h:form>
-            <h:outputLabel for="input" value="Input" />
-            <h:inputText id="input" value="#{helloWorld.message.text}" />
-            <h:commandButton value="Submit"
-                action="#{helloWorld.submit}">
-                <f:ajax execute="@form" render=":table" />
-            </h:commandButton>
-        </h:form>
-        <h:dataTable id="table" value="#{helloWorld.messages}" var="message">
-        	<h:column>#{message.id}</h:column>
-        	<h:column>#{message.text}</h:column>
-        </h:dataTable>
-    </h:body>
+	<h:body>
+		<h1>Hello World</h1>
+		<h:form>
+			<h:outputLabel for="input" value="Input" />
+			<h:inputText id="input" value="#{helloWorld.input}" />
+			<h:commandButton value="Submit" action="#{helloWorld.submit}">
+				<f:ajax execute="@form" render=":output" />
+			</h:commandButton>
+		</h:form>
+		<h:outputText id="output" value="#{helloWorld.output}" />
+	</h:body>
 </html>
