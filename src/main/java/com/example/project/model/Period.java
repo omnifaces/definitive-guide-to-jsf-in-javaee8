@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
 
-import com.example.project.model.constraint.PeriodConstraint;
+import com.example.project.model.validator.PeriodConstraint;
 
 @PeriodConstraint
 public class Period implements Serializable {

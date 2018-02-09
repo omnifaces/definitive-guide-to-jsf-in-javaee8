@@ -84,7 +84,7 @@
 
 	<tag>
 		<tag-name>viewParamValidationFailed</tag-name>
-		<handler-class>com.example.project.taghandler.ViewParamValidationFailed</handler-class>
+		<handler-class>com.example.project.view.taghandler.ViewParamValidationFailed</handler-class>
 	</tag>
 	
 	<tag>

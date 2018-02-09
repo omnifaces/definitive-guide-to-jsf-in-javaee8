@@ -12,38 +12,38 @@
 			<supported-locale>hi</supported-locale>
 		</locale-config>
 		<resource-bundle>
-			<base-name>com.example.project.i18n.text</base-name>
+			<base-name>com.example.project.view.i18n.text</base-name>
 			<var>text</var>
 		</resource-bundle>
 		<resource-bundle>
-			<base-name>com.example.project.i18n.DatabaseResourceBundle</base-name>
+			<base-name>com.example.project.view.i18n.DatabaseResourceBundle</base-name>
 			<var>i18n</var>
 		</resource-bundle>
-		<message-bundle>com.example.project.i18n.messages</message-bundle>
+		<message-bundle>com.example.project.view.i18n.messages</message-bundle>
 		
-		<resource-handler>com.example.project.resourcehandler.VersionResourceHandler</resource-handler>
+		<resource-handler>com.example.project.view.resourcehandler.VersionResourceHandler</resource-handler>
 		
  		<system-event-listener>
-			<system-event-listener-class>com.example.project.listener.DynamicResourceListener</system-event-listener-class>
+			<system-event-listener-class>com.example.project.view.listener.DynamicResourceListener</system-event-listener-class>
 			<system-event-class>javax.faces.event.PostAddToViewEvent</system-event-class>
 			<source-class>javax.faces.component.UIOutput</source-class>
 		</system-event-listener>
 	</application>
 
 	<lifecycle>
-		<phase-listener>com.example.project.listener.PreInvokeApplicationListener</phase-listener>
+		<phase-listener>com.example.project.view.listener.PreInvokeApplicationListener</phase-listener>
 	</lifecycle>
 
 	<factory>
-		<exception-handler-factory>com.example.project.exceptionhandler.AjaxExceptionHandler$Factory</exception-handler-factory>
-		<exception-handler-factory>com.example.project.exceptionhandler.BusinessExceptionHandler$Factory</exception-handler-factory>
+		<exception-handler-factory>com.example.project.view.exceptionhandler.AjaxExceptionHandler$Factory</exception-handler-factory>
+		<exception-handler-factory>com.example.project.view.exceptionhandler.BusinessExceptionHandler$Factory</exception-handler-factory>
 	</factory>
 
 	<render-kit>
 	    <renderer>
 	        <component-family>javax.faces.Message</component-family>
 	        <renderer-type>javax.faces.Message</renderer-type>
-	        <renderer-class>com.example.project.renderer.EscapableMessageRenderer</renderer-class>
+	        <renderer-class>com.example.project.view.renderer.EscapableMessageRenderer</renderer-class>
 	    </renderer>
 	</render-kit>
 </faces-config>

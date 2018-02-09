@@ -10,5 +10,4 @@ public interface Markdown {
 
 	public void setVersion(String version);
 
-
 }

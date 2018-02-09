@@ -6,7 +6,7 @@
 	version="2.2"
 >
 	<persistence-unit name="PersistenceUnitName" transaction-type="JTA">
-		<jta-data-source>java:app/DataSourceName</jta-data-source>
+		<jta-data-source>java:global/DataSourceName</jta-data-source>
 
 		<class>com.example.project.model.BaseEntity</class>
 		<class>com.example.project.model.Credentials</class>
