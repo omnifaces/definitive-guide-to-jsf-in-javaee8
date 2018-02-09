@@ -2,7 +2,6 @@ package com.example.project.model;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.Table;
@@ -10,8 +9,11 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Inheritance
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "formId", "name" }) })
+@DiscriminatorColumn(name = "type")
+@Table(uniqueConstraints = {
+	@UniqueConstraint(columnNames = { "formId", "name" }),
+	@UniqueConstraint(columnNames = { "formId", "ordering" }),
+})
 public abstract class Field extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
