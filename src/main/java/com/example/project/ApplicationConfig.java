@@ -9,8 +9,13 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.example.project.model.ButtonField;
+import com.example.project.model.Field;
 import com.example.project.model.Message;
+import com.example.project.model.PasswordField;
 import com.example.project.model.Product;
+import com.example.project.model.TextField;
+import com.example.project.service.FieldService;
 import com.example.project.service.MessageService;
 import com.example.project.service.ProductService;
 import com.example.project.view.search.MessagesKeywordResolver;
@@ -25,12 +30,16 @@ public class ApplicationConfig implements ServletContextListener {
 	@Inject
 	private MessageService messageService;
 
+	@Inject
+	private FieldService fieldService;
+
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		enableWebsocketEndpoint(event.getServletContext());
 		registerMessagesKeywordResolver(FacesContext.getCurrentInstance());
 		createTestProducts();
 		createTestMessages();
+		createTestFields();
 	}
 
 	private void enableWebsocketEndpoint(ServletContext context) {
@@ -40,7 +49,7 @@ public class ApplicationConfig implements ServletContextListener {
 	private void registerMessagesKeywordResolver(FacesContext context) {
 		context.getApplication().addSearchKeywordResolver(new MessagesKeywordResolver());
 	}
-	
+
 	private void createTestProducts() {
 		productService.create(Product.create("One", "The first product"));
 		productService.create(Product.create("Two", "The second product"));
@@ -68,4 +77,11 @@ public class ApplicationConfig implements ServletContextListener {
 		messageService.create(message8);
 		messageService.create(message9);
 	}
+
+	private void createTestFields() {
+		fieldService.create(Field.create(1, TextField.class, "loginForm", "email", "Email Address", true));
+		fieldService.create(Field.create(2, PasswordField.class, "loginForm", "password", "Password", true));
+		fieldService.create(Field.create(3, ButtonField.class, "loginForm", "login", "Log In"));
+	}
+
 }
