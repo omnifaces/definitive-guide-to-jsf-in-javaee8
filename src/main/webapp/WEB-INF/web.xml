@@ -15,6 +15,10 @@
 		<param-value>102400</param-value> <!-- 100 kB, so that the AjaxExceptionHandler has chance to reset the response when an exception occurs during render response phase. -->
 	</context-param>
 	<context-param>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+		<param-value>/WEB-INF/example.taglib.xml</param-value> <!-- Required in Payara as it cannot automatically find it in WAR but only in JAR. Can be removed when using WildFly. -->
+	</context-param>
+	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value> <!-- Prevent comments from evaluating any EL expressions and ending up in generated HTML output. -->
 	</context-param>
