@@ -78,7 +78,15 @@
 		<description>Renders a HTML list.</description>
 		<tag-name>dataList</tag-name>
 		<component>
-			<component-type>example.DataList</component-type>
+			<component-type>project.DataList</component-type>
+		</component>
+	</tag>
+
+	<tag>
+		<description>Extends h:inputFile with new "accept" attribute.</description>
+		<tag-name>inputFile</tag-name>
+		<component>
+			<component-type>project.InputFile</component-type>
 		</component>
 	</tag>
 

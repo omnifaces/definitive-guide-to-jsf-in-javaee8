@@ -12,7 +12,7 @@ import javax.faces.render.Renderer;
 @FacesRenderer(componentFamily=UIData.COMPONENT_FAMILY, rendererType=DataListRenderer.RENDERER_TYPE)
 public class DataListRenderer extends Renderer {
 
-	public static final String RENDERER_TYPE = "example.List";
+	public static final String RENDERER_TYPE = "project.List";
 
 	@Override
 	public boolean getRendersChildren() {

@@ -86,12 +86,12 @@ public abstract class Field extends BaseEntity {
 		this.required = required;
 	}
 
-	public void setOrdering(int ordering) {
-		this.ordering = ordering;
-	}
-
 	public int getOrdering() {
 		return ordering;
+	}
+
+	public void setOrdering(int ordering) {
+		this.ordering = ordering;
 	}
 
 	public interface DynamicForm {

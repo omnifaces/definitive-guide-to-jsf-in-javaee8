@@ -8,8 +8,10 @@ import javax.faces.component.html.HtmlInputFile;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
-@FacesComponent(createTag=true)
+@FacesComponent(InputFile.COMPONENT_TYPE)
 public class InputFile extends HtmlInputFile {
+
+	public static final String COMPONENT_TYPE = "project.InputFile";
 
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {

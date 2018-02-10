@@ -7,6 +7,10 @@
 	<ui:define name="content">
 		<h:form id="login">
 			<fieldset>
+                <header>
+                    <h1>Log In</h1>
+                </header>
+
 				<h:outputLabel for="email" value="#{text['label.email']}" />
 				<h:inputText id="email" required="true" value="#{login.email}" />
 				<h:message for="email" styleClass="message" />
@@ -15,8 +19,10 @@
 				<h:inputSecret id="password" required="true" value="#{login.password}" />
 				<h:message for="password" styleClass="message" />
 
-				<h:commandButton id="submit" action="#{login.submit}" value="#{text['label.login']}" />
-				<h:message for="login" styleClass="message" />
+				<footer>
+					<h:commandButton id="submit" action="#{login.submit}" value="#{text['label.login']}" />
+					<h:message for="login" styleClass="message" />
+				</footer>
 			</fieldset>
 		</h:form>
 	</ui:define>

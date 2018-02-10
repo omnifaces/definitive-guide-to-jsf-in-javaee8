@@ -49,7 +49,7 @@ public class AjaxExceptionHandler extends ExceptionHandlerWrapper {
 		}
 
 		ExternalContext external = context.getExternalContext();
-		String uri = external.getRequestServletPath();
+		String uri = external.getRequestContextPath() + external.getRequestServletPath();
 		Map<String, Object> requestScope = external.getRequestMap();
 		requestScope.put(RequestDispatcher.ERROR_REQUEST_URI, uri);
 		requestScope.put(RequestDispatcher.ERROR_EXCEPTION, exception);

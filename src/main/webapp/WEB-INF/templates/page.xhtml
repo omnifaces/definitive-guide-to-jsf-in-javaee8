@@ -7,7 +7,7 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
 >
-	<c:set var="page" value="page_#{fn:replace(view.viewId.substring(1, view.viewId.lastIndexOf('.')),'/', '_')}" scope="view" />
+	<c:set var="page" value="page#{fn:replace(fn:split(view.viewId, '.')[0], '/', '_')}" scope="view" />
 
 	<f:view locale="#{activeLocale.current}">
 		<h:head>

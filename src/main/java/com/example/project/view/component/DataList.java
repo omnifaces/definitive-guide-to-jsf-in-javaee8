@@ -8,7 +8,7 @@ import com.example.project.view.renderer.DataListRenderer;
 @FacesComponent(DataList.COMPONENT_TYPE)
 public class DataList extends UIData {
 
-	public static final String COMPONENT_TYPE = "example.DataList";
+	public static final String COMPONENT_TYPE = "project.DataList";
 
 	public DataList() {
 		setRendererType(DataListRenderer.RENDERER_TYPE);

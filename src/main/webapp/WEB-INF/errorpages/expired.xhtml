@@ -6,15 +6,15 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
 >
-	<ui:insert name="content">
+	<ui:define name="content">
 		<h2>Session Expired</h2>
 		<p>
 			Sorry, your session has expired.
 			This can happen when you have been inactive too long, or when you have been logged out.
 		</p>
 		<p>
-			You can try going back to <h:link outcome="#{requestScope['javax.servlet.error.request_uri']}">the same page</h:link>,
+			You can try going back to <a href="#{requestScope['javax.servlet.error.request_uri']}">the same page</a>,
 			or you can restart at <h:link outcome="/index">the home page</h:link>.
 		</p>
-	</ui:insert>
+	</ui:define>
 </ui:composition>
