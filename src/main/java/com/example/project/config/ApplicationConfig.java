@@ -2,9 +2,7 @@ package com.example.project.config;
 
 import javax.faces.annotation.FacesConfig;
 import javax.faces.context.FacesContext;
-import javax.faces.push.PushContext;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -35,15 +33,10 @@ public class ApplicationConfig implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		enableWebsocketEndpoint(event.getServletContext());
 		registerMessagesKeywordResolver(FacesContext.getCurrentInstance());
 		createTestProducts();
 		createTestMessages();
 		createTestFields();
-	}
-
-	private void enableWebsocketEndpoint(ServletContext context) {
-		context.setInitParameter(PushContext.ENABLE_WEBSOCKET_ENDPOINT_PARAM_NAME, "true");
 	}
 
 	private void registerMessagesKeywordResolver(FacesContext context) {

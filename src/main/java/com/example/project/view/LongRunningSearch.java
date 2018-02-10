@@ -24,8 +24,7 @@ public class LongRunningSearch implements Serializable {
 	@Inject
 	private LongRunningSearchService service;
 
-	@Inject
-	@Push
+	@Inject @Push
 	private PushContext push;
 
 	@PostConstruct

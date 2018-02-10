@@ -11,6 +11,10 @@
 	<!-- Standard JSF settings. -->
 
 	<context-param>
+		<param-name>javax.faces.ENABLE_WEBSOCKET_ENDPOINT</param-name>
+		<param-value>true</param-value> <!-- Explicitly required to activate f:websocket. -->
+	</context-param>
+  	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
 		<param-value>102400</param-value> <!-- 100 kB, so that the AjaxExceptionHandler has chance to reset the response when an exception occurs during render response phase. -->
 	</context-param>

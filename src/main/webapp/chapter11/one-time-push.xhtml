@@ -5,26 +5,13 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<ui:define name="content">
+		<h:outputScript name="scripts/longRunningProcess.js" target="head" />
 		<h:form>
-		    <h:commandButton value="submit"
-		        onclick="startLongRunningProcess()"
-		        action="#{longRunningProcess.submit}">
+		    <h:commandButton value="submit" onclick="startLongRunningProcess()" action="#{longRunningProcess.submit}">
 		        <f:ajax />
 		    </h:commandButton>
 		</h:form>
 		<div id="status" />
-		<f:websocket id="push" channel="push" scope="view"
-		    connected="false" onmessage="endLongRunningProcess">
-		</f:websocket>
-		<script>
-			function startLongRunningProcess() {
-				jsf.push.open("push");
-		        document.getElementById("status").innerHTML = "Long running process has started ... (this will take 5 seconds)";
-			}
-		    function endLongRunningProcess(result) {
-		        jsf.push.close("push");
-		        document.getElementById("status").innerHTML = result;
-		    }
-		</script>
+		<f:websocket id="push" channel="push" scope="view" connected="false" onmessage="endLongRunningProcess" />
 	</ui:define>
 </ui:composition>

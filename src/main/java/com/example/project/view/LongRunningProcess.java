@@ -15,8 +15,7 @@ public class LongRunningProcess {
 	@Inject
 	private LongRunningProcessService service;
 
-	@Inject
-	@Push
+	@Inject @Push
 	private PushContext push;
 
 	public void submit() {
