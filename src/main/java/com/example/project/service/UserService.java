@@ -73,7 +73,6 @@ public class UserService {
 		if (credentials == null) {
 			credentials = new Credentials();
 			credentials.setUser(managedUser);
-			entityManager.persist(credentials);
 		}
 
 		credentials.setPassword(password);

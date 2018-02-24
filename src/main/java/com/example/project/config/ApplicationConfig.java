@@ -1,10 +1,11 @@
 package com.example.project.config;
 
 import javax.faces.annotation.FacesConfig;
+import javax.faces.application.ViewVisitOption;
 import javax.faces.context.FacesContext;
+import javax.faces.webapp.FacesServlet;
 import javax.inject.Inject;
-import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -21,13 +22,6 @@ import com.example.project.service.ProductService;
 import com.example.project.service.UserService;
 import com.example.project.view.search.MessagesKeywordResolver;
 
-@CustomFormAuthenticationMechanismDefinition(
-	loginToContinue = @LoginToContinue(
-		loginPage = "/login.xhtml",
-		useForwardToLogin = false,
-		errorPage = ""
-	)
-)
 @FacesConfig
 @WebListener
 public class ApplicationConfig implements ServletContextListener {
@@ -46,7 +40,9 @@ public class ApplicationConfig implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		registerMessagesKeywordResolver(FacesContext.getCurrentInstance());
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		registerMessagesKeywordResolver(facesContext);
+		addExtensionLessMappings(event.getServletContext(), facesContext);
 		createTestProducts();
 		createTestMessages();
 		createTestFields();
@@ -55,6 +51,19 @@ public class ApplicationConfig implements ServletContextListener {
 
 	private void registerMessagesKeywordResolver(FacesContext context) {
 		context.getApplication().addSearchKeywordResolver(new MessagesKeywordResolver());
+	}
+
+	private void addExtensionLessMappings(ServletContext servletContext, FacesContext facesContext) {
+		servletContext
+			.getServletRegistrations().values().stream()
+			.filter(servlet -> servlet.getClassName().equals(FacesServlet.class.getName()))
+			.findAny()
+			.ifPresent(facesServlet -> facesContext
+				.getApplication()
+				.getViewHandler()
+				.getViews(facesContext, "/", ViewVisitOption.RETURN_AS_MINIMAL_IMPLICIT_OUTCOME)
+				.forEach(view -> facesServlet.addMapping(view))
+		);
 	}
 
 	private void createTestProducts() {
