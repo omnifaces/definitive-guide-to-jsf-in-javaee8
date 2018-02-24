@@ -6,14 +6,17 @@ import static javax.persistence.FetchType.LAZY;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(length = 254, nullable = false, unique = true)
-	private String email;
+	public static final int EMAIL_MAXLENGTH = 254;
+
+	@Column(length = EMAIL_MAXLENGTH, nullable = false, unique = true)
+	private @NotNull String email;
 
 	@OneToOne(fetch = LAZY, cascade = ALL)
 	private Credentials credentials;

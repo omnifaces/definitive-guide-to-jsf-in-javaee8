@@ -22,6 +22,7 @@
 		<message-bundle>com.example.project.view.i18n.messages</message-bundle>
 		
 		<resource-handler>com.example.project.view.resourcehandler.VersionResourceHandler</resource-handler>
+		<search-keyword-resolver>com.example.project.view.search.MessagesKeywordResolver</search-keyword-resolver>
 		
  		<system-event-listener>
 			<system-event-listener-class>com.example.project.view.listener.DynamicResourceListener</system-event-listener-class>

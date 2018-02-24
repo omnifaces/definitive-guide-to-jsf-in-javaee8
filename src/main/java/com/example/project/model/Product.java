@@ -9,10 +9,13 @@ public class Product extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(length = 32, nullable = false)
+	public static final int NAME_MAXLENGTH = 32;
+	public static final int DESCRIPTION_MAXLENGTH = 255;
+
+	@Column(length = NAME_MAXLENGTH, nullable = false)
 	private @NotNull String name;
 
-	@Column(length = 255, nullable = false)
+	@Column(length = DESCRIPTION_MAXLENGTH, nullable = false)
 	private @NotNull String description;
 
 	public static Product create(String name, String description) {

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Inheritance
@@ -18,14 +19,18 @@ public abstract class Field extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(length = 32, nullable = false)
-	private String formId;
+	public static final int FORM_ID_MAXLENGTH = 32;
+	public static final int NAME_MAXLENGTH = 32;
+	public static final int LABEL_MAXLENGTH = 64;
 
-	@Column(length = 32, nullable = false)
-	private String name;
+	@Column(length = FORM_ID_MAXLENGTH, nullable = false)
+	private @NotNull String formId;
 
-	@Column(length = 64, nullable = false)
-	private String label;
+	@Column(length = NAME_MAXLENGTH, nullable = false)
+	private @NotNull String name;
+
+	@Column(length = LABEL_MAXLENGTH, nullable = false)
+	private @NotNull String label;
 
 	@Column(nullable = false)
 	private boolean required = false;

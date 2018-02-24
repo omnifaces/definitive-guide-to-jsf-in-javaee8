@@ -1,9 +1,5 @@
 package com.example.project.service;
 
-import static com.example.project.util.MessageDigests.digest;
-import static com.example.project.util.MessageDigests.Algorithm.SHA_256;
-
-import java.util.Arrays;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -50,23 +46,37 @@ public class UserService {
 
 	public User getByEmailAndPassword(String email, String password) {
 	    User user = findByEmail(email).orElseThrow(InvalidUsernameException::new);
-	    Credentials credentials = user.getCredentials();
-	    byte[] passwordHash = digest(password, credentials.getSalt(), SHA_256);
 
-	    if (!Arrays.equals(passwordHash, credentials.getPasswordHash())) {
+	    if (!user.getCredentials().isValid(password)) {
 	        throw new InvalidPasswordException();
 	    }
 
 	    return user;
 	}
 
-	public Long create(User user) {
-	    if (findByEmail(user.getEmail()).isPresent()) {
+	public User register(String email, String password) {
+	    if (findByEmail(email).isPresent()) {
 	        throw new DuplicateEntityException();
 	    }
 
+	    User user = new User();
+	    user.setEmail(email);
 	    entityManager.persist(user);
-	    return user.getId();
+	    setPassword(user, password);
+	    return user;
 	}
-}
 
+	public void setPassword(User user, String password) {
+		User managedUser = entityManager.merge(user);
+		Credentials credentials = managedUser.getCredentials();
+
+		if (credentials == null) {
+			credentials = new Credentials();
+			credentials.setUser(managedUser);
+			entityManager.persist(credentials);
+		}
+
+		credentials.setPassword(password);
+	}
+
+}

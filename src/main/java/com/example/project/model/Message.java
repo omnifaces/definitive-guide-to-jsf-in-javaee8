@@ -20,16 +20,18 @@ public class Message extends BaseEntity implements Markdown {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final int VERSION_MAXLENGTH = 8;
+
 	@Lob
 	@Column(nullable = false)
 	private @NotNull String text;
 
 	@Lob
 	@Column(nullable = false)
-	private String html;
+	private @NotNull String html;
 
-	@Column(nullable = false, length = 8)
-	private String version;
+	@Column(nullable = false, length = VERSION_MAXLENGTH)
+	private @NotNull String version;
 
 	@ManyToOne
 	private Message replyTo;

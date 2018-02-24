@@ -4,9 +4,6 @@ import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -14,29 +11,22 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "locale", "key" }) })
-public class Translation {
+public class Translation extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private static final long serialVersionUID = 1L;
 
-	@Column(length = 5, nullable = false)
+	public static final int LOCALE_MAXLENGTH = 5;
+	public static final int KEY_MAXLENGTH = 255;
+
+	@Column(length = LOCALE_MAXLENGTH, nullable = false)
 	private @NotNull Locale locale;
 
-	@Column(length = 255, nullable = false)
+	@Column(length = KEY_MAXLENGTH, nullable = false)
 	private @NotNull String key;
 
 	@Lob
 	@Column(nullable = false)
 	private @NotNull String value;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Locale getLocale() {
 		return locale;

@@ -3,6 +3,8 @@ package com.example.project.config;
 import javax.faces.annotation.FacesConfig;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
+import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -16,8 +18,16 @@ import com.example.project.model.TextField;
 import com.example.project.service.FieldService;
 import com.example.project.service.MessageService;
 import com.example.project.service.ProductService;
+import com.example.project.service.UserService;
 import com.example.project.view.search.MessagesKeywordResolver;
 
+@CustomFormAuthenticationMechanismDefinition(
+	loginToContinue = @LoginToContinue(
+		loginPage = "/login.xhtml",
+		useForwardToLogin = false,
+		errorPage = ""
+	)
+)
 @FacesConfig
 @WebListener
 public class ApplicationConfig implements ServletContextListener {
@@ -31,12 +41,16 @@ public class ApplicationConfig implements ServletContextListener {
 	@Inject
 	private FieldService fieldService;
 
+	@Inject
+	private UserService userService;
+
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		registerMessagesKeywordResolver(FacesContext.getCurrentInstance());
 		createTestProducts();
 		createTestMessages();
 		createTestFields();
+		createTestUsers();
 	}
 
 	private void registerMessagesKeywordResolver(FacesContext context) {
@@ -75,6 +89,11 @@ public class ApplicationConfig implements ServletContextListener {
 		fieldService.create(Field.create(1, TextField.class, "loginForm", "email", "Email Address", true));
 		fieldService.create(Field.create(2, PasswordField.class, "loginForm", "password", "Password", true));
 		fieldService.create(Field.create(3, ButtonField.class, "loginForm", "login", "Log In"));
+	}
+
+	private void createTestUsers() {
+		userService.register("admin@example.com", "passw0rd");
+		userService.register("user@example.com", "passw0rd");
 	}
 
 }
