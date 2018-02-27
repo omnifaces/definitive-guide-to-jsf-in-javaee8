@@ -1,5 +1,7 @@
 package com.example.project.service;
 
+import static java.util.Arrays.asList;
+
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -8,9 +10,12 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import com.example.project.model.Credentials;
+import com.example.project.model.Group;
 import com.example.project.model.User;
+import com.example.project.service.exception.CredentialsException;
 import com.example.project.service.exception.DuplicateEntityException;
 import com.example.project.service.exception.EntityNotFoundException;
+import com.example.project.service.exception.InvalidGroupException;
 import com.example.project.service.exception.InvalidPasswordException;
 import com.example.project.service.exception.InvalidUsernameException;
 
@@ -44,8 +49,21 @@ public class UserService {
 	    }
 	}
 
+	public Optional<User> findByEmailAndPassword(String email, String password) {
+	    try {
+	        return Optional.of(getByEmailAndPassword(email, password));
+	    }
+	    catch (CredentialsException e) {
+	        return Optional.empty();
+	    }
+	}
+
 	public User getByEmailAndPassword(String email, String password) {
 	    User user = findByEmail(email).orElseThrow(InvalidUsernameException::new);
+
+	    if (!user.getGroups().contains(Group.USER)) {
+	    	throw new InvalidGroupException();
+	    }
 
 	    if (!user.getCredentials().isValid(password)) {
 	        throw new InvalidPasswordException();
@@ -54,13 +72,15 @@ public class UserService {
 	    return user;
 	}
 
-	public User register(String email, String password) {
+	public User register(String email, String password, Group... groups) {
 	    if (findByEmail(email).isPresent()) {
 	        throw new DuplicateEntityException();
 	    }
 
 	    User user = new User();
 	    user.setEmail(email);
+	    user.getGroups().add(Group.USER); // Default group. When removed, then user is effectively disabled.
+	    user.getGroups().addAll(asList(groups));
 	    entityManager.persist(user);
 	    setPassword(user, password);
 	    return user;

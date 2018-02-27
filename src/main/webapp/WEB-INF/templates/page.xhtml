@@ -18,9 +18,15 @@
 			<header>
 				<nav>
 					<ul>
-						<li><h:link outcome="/index" value="#{text['page_home.title']}" /></li>
-						<li><h:link outcome="/login" value="#{text['page_login.title']}" /></li>
-						<li><h:link outcome="/signup" value="#{text['page_signup.title']}" /></li>
+						<li><h:link outcome="/index" value="#{text['label.home']}" /></li>
+						<c:if test="#{empty request.userPrincipal}">
+							<li><h:link outcome="/login" value="#{text['label.login']}" /></li>
+							<li><h:link outcome="/signup" value="#{text['label.signup']}" /></li>
+						</c:if>
+						<c:if test="#{not empty request.userPrincipal}">
+							<li>#{request.userPrincipal.user.email}</li>
+							<li><h:form><h:commandLink action="#{logout.submit}" value="#{text['label.logout']}" /></h:form></li>
+						</c:if>
 					</ul>
 				</nav>
 				<h:form>

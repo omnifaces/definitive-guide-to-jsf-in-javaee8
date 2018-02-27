@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebListener;
 
 import com.example.project.model.ButtonField;
 import com.example.project.model.Field;
+import com.example.project.model.Group;
 import com.example.project.model.Message;
 import com.example.project.model.PasswordField;
 import com.example.project.model.Product;
@@ -101,7 +102,7 @@ public class ApplicationConfig implements ServletContextListener {
 	}
 
 	private void createTestUsers() {
-		userService.register("admin@example.com", "passw0rd");
+		userService.register("admin@example.com", "passw0rd", Group.ADMIN);
 		userService.register("user@example.com", "passw0rd");
 	}
 
