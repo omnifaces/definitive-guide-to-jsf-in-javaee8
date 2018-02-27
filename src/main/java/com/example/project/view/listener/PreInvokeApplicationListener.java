@@ -11,10 +11,6 @@ public class PreInvokeApplicationListener implements PhaseListener {
 
 	private static final long serialVersionUID = 1L;
 
-	public PreInvokeApplicationListener() {
-		System.out.println("PreInvokeApplicationListener.PreInvokeApplicationListener()");
-	}
-
 	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.INVOKE_APPLICATION;
